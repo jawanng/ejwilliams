@@ -1,66 +1,78 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      {/* Hero Section */}
+      <section style={{
+        backgroundColor: 'var(--color-primary)',
+        color: 'var(--color-white)',
+        padding: '6rem 0',
+        textAlign: 'center',
+        backgroundImage: 'linear-gradient(rgba(0, 32, 91, 0.9), rgba(0, 32, 91, 0.9)), url("https://placehold.co/1200x600/00205B/C5B358?text=Masonic+Lodge+Hero")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }}>
+        <div className="container">
+          <h1 style={{ fontSize: '3.5rem', marginBottom: '1rem', color: 'var(--color-secondary)' }}>E. Jerry Williams Lodge No. 141</h1>
+          <p style={{ fontSize: '1.5rem', maxWidth: '800px', margin: '0 auto 2rem' }}>Making Good Men Better</p>
+          <div className="flex gap-md" style={{ justifyContent: 'center' }}>
+            <a href="/join" className="btn btn-secondary">Become a Member</a>
+            <a href="/events" className="btn" style={{ border: '1px solid var(--color-white)', color: 'var(--color-white)' }}>View Events</a>
+          </div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Welcome Section */}
+      <section className="section">
+        <div className="container">
+          <div className="section-title">
+            <h2>Welcome from the East</h2>
+          </div>
+          <div className="flex gap-md" style={{ alignItems: 'flex-start' }}>
+            <div style={{ flex: 1 }}>
+              <p style={{ marginBottom: '1rem', fontSize: '1.1rem' }}>
+                Greetings and welcome to the official website of E. Jerry Williams Lodge No. 141.
+                We are dedicated to the principles of Brotherly Love, Relief, and Truth.
+                Our lodge has a rich history of serving the community and fostering the personal growth of our members.
+              </p>
+              <p>
+                Whether you are a traveling brother or a member of the community interested in learning more about Freemasonry,
+                we invite you to explore our site and learn about our works.
+              </p>
+              <div style={{ marginTop: '2rem' }}>
+                <p style={{ fontWeight: 'bold', fontFamily: 'var(--font-heading)', fontSize: '1.2rem' }}>Worshipful Master</p>
+                <p style={{ color: 'var(--color-text-light)' }}>E. Jerry Williams Lodge No. 141</p>
+              </div>
+            </div>
+            <div style={{ width: '300px', height: '300px', backgroundColor: '#ddd', borderRadius: 'var(--radius-md)', flexShrink: 0 }}>
+              {/* Placeholder for WM Image */}
+              <img src="https://placehold.co/300x300?text=Worshipful+Master" alt="Worshipful Master" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'var(--radius-md)' }} />
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Features / Quick Links */}
+      <section className="section" style={{ backgroundColor: 'var(--color-background)' }}>
+        <div className="container">
+          <div className="flex gap-md" style={{ justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div className="card" style={{ flex: '1 1 300px', textAlign: 'center' }}>
+              <h3>Our History</h3>
+              <p>Learn about the legacy of E. Jerry Williams and the founding of our lodge.</p>
+              <a href="#" style={{ display: 'inline-block', marginTop: '1rem', fontWeight: 'bold' }}>Read More &rarr;</a>
+            </div>
+            <div className="card" style={{ flex: '1 1 300px', textAlign: 'center' }}>
+              <h3>Community Service</h3>
+              <p>Discover how we support our local community through charity and volunteer work.</p>
+              <a href="#" style={{ display: 'inline-block', marginTop: '1rem', fontWeight: 'bold' }}>View Projects &rarr;</a>
+            </div>
+            <div className="card" style={{ flex: '1 1 300px', textAlign: 'center' }}>
+              <h3>Contact Us</h3>
+              <p>Have questions? Reach out to our Secretary for more information.</p>
+              <a href="#" style={{ display: 'inline-block', marginTop: '1rem', fontWeight: 'bold' }}>Get in Touch &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
