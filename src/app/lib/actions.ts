@@ -34,7 +34,12 @@ const CreateEventSchema = z.object({
     isPublic: z.string().optional(),
 });
 
-export async function createEvent(prevState: { message?: string, errors?: any }, formData: FormData) {
+type FormState = {
+    message?: string;
+    errors?: Record<string, string[]>;
+};
+
+export async function createEvent(prevState: FormState, formData: FormData) {
     const validatedFields = CreateEventSchema.safeParse({
         title: formData.get('title'),
         description: formData.get('description'),
@@ -63,7 +68,7 @@ export async function createEvent(prevState: { message?: string, errors?: any },
             },
         });
     } catch (error) {
-        // console.error(error); // Using variable to silence linter or just ignore
+        // console.error(error); 
         return {
             message: 'Database Error: Failed to Create Event.',
         };
@@ -81,7 +86,7 @@ const CreateDocumentSchema = z.object({
     date: z.string(),
 });
 
-export async function createDocument(prevState: { message?: string, errors?: any }, formData: FormData) {
+export async function createDocument(prevState: FormState, formData: FormData) {
     const validatedFields = CreateDocumentSchema.safeParse({
         title: formData.get('title'),
         content: formData.get('content'),
@@ -119,7 +124,7 @@ export async function createDocument(prevState: { message?: string, errors?: any
     redirect('/admin/minutes');
 }
 
-export async function createPayment(prevState: any, formData: FormData) {
+export async function createPayment(prevState: FormState | undefined, formData: FormData) {
     const amount = parseFloat(formData.get('amount') as string);
     const description = formData.get('description') as string;
     const userId = formData.get('userId') as string;
