@@ -24,82 +24,55 @@ This guide explains how to deploy the E. Jerry Williams membership site to Googl
     *   Go to the **Users** tab.
     *   Click **Add User Account**.
 
-## 2. Prepare the Application for Deployment
+## 2. Setup Continuous Deployment (CI/CD)
 
-The application is already containerized using `Dockerfile`.
+You can set up Cloud Build to automatically deploy your application when you push to GitHub.
 
-## 3. Deploy to Cloud Run
+### A. Enable APIs
 
-We will build the container image and deploy it to Cloud Run.
+Enable the following APIs in your Google Cloud Project:
+- Cloud Build API
+- Cloud Run API
+- Container Registry API (or Artifact Registry)
 
-### Option A: Build and Deploy from Source (Recommended)
+### B. Connect GitHub Repository
 
-Run the following command in the root of your project:
+1.  Go to the [Cloud Build Triggers page](https://console.cloud.google.com/cloud-build/triggers).
+2.  Click **Create Trigger**.
+3.  **Source**: Select your GitHub repository.
+4.  **Configuration**:
+    *   **Name**: `deploy-on-push`
+    *   **Event**: Push to a branch.
+    *   **Branch**: `^master$` (or `main`)
+    *   **Configuration**: Cloud Build configuration file (yaml or json).
+    *   **Location**: `cloudbuild.yaml` (default).
+5.  **Advanced configuration** -> **Substitution variables**:
+    *   Add a variable `_INSTANCE_CONNECTION_NAME` with the value of your Cloud SQL Connection Name (e.g., `my-project:us-east1:my-instance`).
+6.  Click **Create**.
 
-```bash
-gcloud run deploy ejwilliams-app \
-  --source . \
-  --platform managed \
-  --region us-east1 \
-  --allow-unauthenticated \
-  --set-env-vars="AUTH_SECRET=your_generated_secret_here" \
-  --add-cloudsql-instances=PROJECT_ID:REGION:INSTANCE_ID
-```
+### C. First Deployment
 
-*   Replace `PROJECT_ID:REGION:INSTANCE_ID` with your Cloud SQL Connection Name (found on the Overview page of your SQL instance).
-*   Replace `your_generated_secret_here` with a strong random string (e.g. generated via `openssl rand -base64 32`).
+On your first push, Cloud Build will build and deploy the container. However, the service might fail to start if the Environment Variables (`DATABASE_URL`, `AUTH_SECRET`) are not set yet.
 
-### Option B: Build Image then Deploy
+You need to set them on the Cloud Run service **once** (they persist across deployments).
 
-1.  **Build the image:**
-
-    ```bash
-    gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/ejwilliams-app
-    ```
-
-2.  **Deploy:**
-
-    ```bash
-    gcloud run deploy ejwilliams-app \
-      --image gcr.io/YOUR_PROJECT_ID/ejwilliams-app \
-      --platform managed \
-      --region us-east1 \
-      --allow-unauthenticated \
-      --set-env-vars="AUTH_SECRET=your_generated_secret_here" \
-      --add-cloudsql-instances=PROJECT_ID:REGION:INSTANCE_ID
-    ```
-
-## 4. Configure Database Connection
-
-Cloud Run needs to know how to connect to the database. When using `--add-cloudsql-instances`, Cloud Run creates a Unix socket at `/cloudsql/PROJECT_ID:REGION:INSTANCE_ID`.
-
-However, Prisma needs a connection URL.
-
-**Environment Variables:**
-
-You need to set `DATABASE_URL` environment variable for the Cloud Run service.
-
-1.  Go to [Cloud Run Console](https://console.cloud.google.com/run).
-2.  Select your service (`ejwilliams-app`).
+1.  After the first failed deployment (or before), go to [Cloud Run](https://console.cloud.google.com/run).
+2.  Select the service `ejwilliams-app`.
 3.  Click **Edit & Deploy New Revision**.
-4.  Go to the **Variables & Secrets** tab.
-5.  Add `DATABASE_URL` environment variable:
-
-    ```
-    postgresql://USER:PASSWORD@localhost/DB_NAME?host=/cloudsql/PROJECT_ID:REGION:INSTANCE_ID
-    ```
-
-    *   Replace `USER`, `PASSWORD`, `DB_NAME` with your Cloud SQL details.
-    *   Replace `PROJECT_ID:REGION:INSTANCE_ID` with the Connection Name.
-    *   **Note**: The `host` query parameter is crucial for connecting via Unix socket in Cloud Run.
-
+4.  **Variables & Secrets**:
+    *   `AUTH_SECRET`: `your_generated_secret`
+    *   `DATABASE_URL`: `postgresql://USER:PASSWORD@localhost/DB_NAME?host=/cloudsql/PROJECT_ID:REGION:INSTANCE_ID`
+5.  **Connections**:
+    *   Ensure the Cloud SQL connection is added.
 6.  Click **Deploy**.
 
-## 5. Run Database Migrations
+Future pushes to GitHub will now automatically update the application.
+
+## 3. Run Database Migrations
 
 Since Cloud Run is stateless, you can't run migrations interactively easily.
 
-**Option 1: Run migrations from your local machine (easiest)**
+**Run migrations from your local machine (recommended):**
 
 1.  Install `Cloud SQL Auth Proxy` on your local machine.
 2.  Start the proxy:
@@ -111,23 +84,6 @@ Since Cloud Run is stateless, you can't run migrations interactively easily.
     DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/DB_NAME" npx prisma migrate deploy
     ```
 
-**Option 2: Cloud Build Job**
-
-You can create a Cloud Build job to run migrations, but Option 1 is simpler for getting started.
-
-## 6. Access the Application
+## 4. Access the Application
 
 Once deployed, Cloud Run will provide a URL (e.g., `https://ejwilliams-app-xyz.a.run.app`).
-
-1.  Open the URL.
-2.  Log in with the users you seeded (you might need to run a seed script via the local proxy method if the DB is empty).
-
-## Seeding Production DB
-
-To seed the production database:
-
-1.  Connect via Cloud SQL Proxy (as in Step 5).
-2.  Run:
-    ```bash
-    DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/DB_NAME" npx prisma db seed
-    ```
