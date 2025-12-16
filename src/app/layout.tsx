@@ -2,6 +2,7 @@ import './globals.css';
 import './design-system.css';
 import type { Metadata } from 'next';
 import { Playfair_Display, Lato } from 'next/font/google';
+import Link from 'next/link';
 
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-heading' });
 const lato = Lato({ weight: ['400', '700'], subsets: ['latin'], variable: '--font-body' });
@@ -27,10 +28,10 @@ export default function RootLayout({
                 E. Jerry Williams Lodge No. 141
               </div>
               <div className="flex gap-md">
-                <a href="/" style={{ color: 'var(--color-white)' }}>Home</a>
-                <a href="/events" style={{ color: 'var(--color-white)' }}>Events</a>
-                <a href="/join" style={{ color: 'var(--color-white)' }}>Join</a>
-                <a href="/login" className="btn btn-secondary" style={{ padding: '0.25rem 0.75rem', fontSize: '0.9rem' }}>Member Login</a>
+                <Link href="/" style={{ color: 'var(--color-white)' }}>Home</Link>
+                <Link href="/events" style={{ color: 'var(--color-white)' }}>Events</Link>
+                <Link href="/join" style={{ color: 'var(--color-white)' }}>Join</Link>
+                <Link href="/login" className="btn btn-secondary" style={{ padding: '0.25rem 0.75rem', fontSize: '0.9rem' }}>Member Login</Link>
               </div>
             </div>
           </nav>

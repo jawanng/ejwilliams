@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Home() {
   return (
     <>
@@ -15,8 +17,8 @@ export default function Home() {
           <h1 style={{ fontSize: '3.5rem', marginBottom: '1rem', color: 'var(--color-secondary)' }}>E. Jerry Williams Lodge No. 141</h1>
           <p style={{ fontSize: '1.5rem', maxWidth: '800px', margin: '0 auto 2rem' }}>Making Good Men Better</p>
           <div className="flex gap-md" style={{ justifyContent: 'center' }}>
-            <a href="/join" className="btn btn-secondary">Become a Member</a>
-            <a href="/events" className="btn" style={{ border: '1px solid var(--color-white)', color: 'var(--color-white)' }}>View Events</a>
+            <Link href="/join" className="btn btn-secondary">Become a Member</Link>
+            <Link href="/events" className="btn" style={{ border: '1px solid var(--color-white)', color: 'var(--color-white)' }}>View Events</Link>
           </div>
         </div>
       </section>
@@ -45,6 +47,7 @@ export default function Home() {
             </div>
             <div style={{ width: '300px', height: '300px', backgroundColor: '#ddd', borderRadius: 'var(--radius-md)', flexShrink: 0 }}>
               {/* Placeholder for WM Image */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="https://placehold.co/300x300?text=Worshipful+Master" alt="Worshipful Master" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'var(--radius-md)' }} />
             </div>
           </div>
@@ -58,17 +61,17 @@ export default function Home() {
             <div className="card" style={{ flex: '1 1 300px', textAlign: 'center' }}>
               <h3>Our History</h3>
               <p>Learn about the legacy of E. Jerry Williams and the founding of our lodge.</p>
-              <a href="#" style={{ display: 'inline-block', marginTop: '1rem', fontWeight: 'bold' }}>Read More &rarr;</a>
+              <Link href="#" style={{ display: 'inline-block', marginTop: '1rem', fontWeight: 'bold' }}>Read More &rarr;</Link>
             </div>
             <div className="card" style={{ flex: '1 1 300px', textAlign: 'center' }}>
               <h3>Community Service</h3>
               <p>Discover how we support our local community through charity and volunteer work.</p>
-              <a href="#" style={{ display: 'inline-block', marginTop: '1rem', fontWeight: 'bold' }}>View Projects &rarr;</a>
+              <Link href="#" style={{ display: 'inline-block', marginTop: '1rem', fontWeight: 'bold' }}>View Projects &rarr;</Link>
             </div>
             <div className="card" style={{ flex: '1 1 300px', textAlign: 'center' }}>
               <h3>Contact Us</h3>
               <p>Have questions? Reach out to our Secretary for more information.</p>
-              <a href="#" style={{ display: 'inline-block', marginTop: '1rem', fontWeight: 'bold' }}>Get in Touch &rarr;</a>
+              <Link href="#" style={{ display: 'inline-block', marginTop: '1rem', fontWeight: 'bold' }}>Get in Touch &rarr;</Link>
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@ export default function MemberDashboard() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
                 <div className="card">
                     <h2 className="text-xl mb-sm">Minutes & Reports</h2>
-                    <p className="mb-md">Read the minutes of past meetings and treasurer's reports.</p>
+                    <p className="mb-md">Read the minutes of past meetings and treasurer&apos;s reports.</p>
                     <div className="flex gap-sm">
                         <Link href="/minutes" className="btn btn-primary">View Minutes</Link>
                         <Link href="/reports" className="btn btn-secondary">View Reports</Link>

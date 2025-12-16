@@ -7,7 +7,7 @@ export default function JoinPage() {
 
             <div style={{ maxWidth: '800px', margin: '0 auto' }}>
                 <p style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>
-                    Freemasonry is the world's oldest and largest fraternity. It is an organization of men who believe in a Supreme Being and are dedicated to self-improvement and helping their communities.
+                    Freemasonry is the world&apos;s oldest and largest fraternity. It is an organization of men who believe in a Supreme Being and are dedicated to self-improvement and helping their communities.
                 </p>
 
                 <div className="card" style={{ marginBottom: '2rem' }}>

@@ -34,7 +34,7 @@ const CreateEventSchema = z.object({
     isPublic: z.string().optional(),
 });
 
-export async function createEvent(prevState: any, formData: FormData) {
+export async function createEvent(prevState: { message?: string, errors?: any }, formData: FormData) {
     const validatedFields = CreateEventSchema.safeParse({
         title: formData.get('title'),
         description: formData.get('description'),
@@ -63,6 +63,7 @@ export async function createEvent(prevState: any, formData: FormData) {
             },
         });
     } catch (error) {
+        // console.error(error); // Using variable to silence linter or just ignore
         return {
             message: 'Database Error: Failed to Create Event.',
         };
@@ -80,7 +81,7 @@ const CreateDocumentSchema = z.object({
     date: z.string(),
 });
 
-export async function createDocument(prevState: any, formData: FormData) {
+export async function createDocument(prevState: { message?: string, errors?: any }, formData: FormData) {
     const validatedFields = CreateDocumentSchema.safeParse({
         title: formData.get('title'),
         content: formData.get('content'),
@@ -107,6 +108,7 @@ export async function createDocument(prevState: any, formData: FormData) {
             },
         });
     } catch (error) {
+         // console.error(error);
         return {
             message: 'Database Error: Failed to Create Document.',
         };
@@ -133,6 +135,7 @@ export async function createPayment(prevState: any, formData: FormData) {
         });
         revalidatePath('/payments');
     } catch (error) {
+         // console.error(error);
         return { message: 'Database Error: Failed to Process Payment.' };
     }
 }
