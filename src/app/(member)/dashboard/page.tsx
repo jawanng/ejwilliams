@@ -1,11 +1,23 @@
 import Link from 'next/link';
+import { auth } from '@/auth';
+import { redirect } from 'next/navigation';
 
-export default function MemberDashboard() {
+export default async function MemberDashboard() {
+    const session = await auth();
+
+    if (!session?.user) {
+        redirect('/login');
+    }
+
+    if (session.user.role === 'ADMIN') {
+        redirect('/admin');
+    }
+
     return (
         <div className="container section">
             <h1 className="mb-md">Member Dashboard</h1>
             <p className="mb-lg">Welcome, Brother. Here you can access lodge resources.</p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
                 <div className="card">
                     <h2 className="text-xl mb-sm">Minutes & Reports</h2>
