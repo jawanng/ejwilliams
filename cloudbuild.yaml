@@ -29,16 +29,9 @@ steps:
       - '-e'
       - 'ADMIN_EMAIL=$_ADMIN_EMAIL'
       - '--'
-      - 'npx'
-      - 'prisma@5.22.0'
-
-      - 'db'
-      - 'push'
-      - '--accept-data-loss'
-      - '--skip-generate'
-      - '&&'
-      - 'node'
-      - 'prisma/seed.js'
+      - 'bash'
+      - '-c'
+      - 'npx prisma@5.22.0 db push --accept-data-loss --skip-generate && node prisma/seed.js'
 
   # 4. Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
