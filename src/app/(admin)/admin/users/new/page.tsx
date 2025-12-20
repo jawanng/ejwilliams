@@ -11,7 +11,7 @@ const initialState = {
 };
 
 export default function NewUserPage() {
-    // @ts-expect-error useFormState type mismatch in some generic cases
+
     const [state, dispatch] = useFormState(createUser, initialState);
 
     return (

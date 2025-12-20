@@ -15,7 +15,7 @@ type FormState = {
 };
 
 export default function EditUserForm({ user, updateUser }: { user: User, updateUser: (prevState: FormState, formData: FormData) => Promise<FormState> }) {
-    // @ts-expect-error useFormState type mismatch
+
     const [state, dispatch] = useFormState(updateUser, initialState);
 
     return (
