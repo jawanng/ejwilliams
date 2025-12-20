@@ -33,9 +33,12 @@ steps:
       # but we can ensure the SQL connection is attached.
       - '--add-cloudsql-instances'
       - '$_INSTANCE_CONNECTION_NAME'
+      - '--set-env-vars'
+      - 'DATABASE_URL=$_DATABASE_URL'
 
 images:
   - 'gcr.io/$PROJECT_ID/ejwilliams-app:$COMMIT_SHA'
 
 substitutions:
   _INSTANCE_CONNECTION_NAME: 'your-project:region:instance' # Set this in the Trigger configuration
+  _DATABASE_URL: 'postgresql://dummy:dummy@localhost:5432/dummy' # Overwrite this in Trigger configuration
