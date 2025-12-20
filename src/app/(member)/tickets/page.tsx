@@ -4,6 +4,8 @@ import { formatDate } from '@/lib/utils';
 import { PaymentForm } from '@/app/ui/payment-form';
 import { Metadata } from 'next';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
     title: 'Event Tickets',
 };
@@ -36,10 +38,10 @@ export default async function TicketsPage() {
                             {user && (
                                 <div className="border-t pt-md mt-md">
                                     <h4 className="font-bold mb-xs">Buy Ticket</h4>
-                                    <PaymentForm 
-                                        userId={user.id} 
+                                    <PaymentForm
+                                        userId={user.id}
                                         amount={50} // Fixed price for now
-                                        description={`Ticket for ${event.title}`} 
+                                        description={`Ticket for ${event.title}`}
                                     />
                                 </div>
                             )}

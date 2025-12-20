@@ -1,6 +1,8 @@
 import { prisma } from '@/lib/prisma';
 import { Metadata } from 'next';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
     title: 'Member Directory',
 };
@@ -8,7 +10,7 @@ export const metadata: Metadata = {
 export default async function DirectoryPage() {
     const members = await prisma.user.findMany({
         where: {
-            role: 'MEMBER', 
+            role: 'MEMBER',
         },
         select: {
             name: true,

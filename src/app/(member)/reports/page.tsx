@@ -2,6 +2,8 @@ import { prisma } from '@/lib/prisma';
 import { formatDate } from '@/lib/utils';
 import { Metadata } from 'next';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
     title: 'Treasurer Reports & Communications',
 };

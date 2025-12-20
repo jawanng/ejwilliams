@@ -2,6 +2,8 @@ import { prisma } from '@/lib/prisma';
 import { formatDate } from '@/lib/utils';
 import { Event } from '@prisma/client';
 
+export const dynamic = 'force-dynamic';
+
 export default async function EventsPage() {
     const events = await prisma.event.findMany({
         where: { isPublic: true },

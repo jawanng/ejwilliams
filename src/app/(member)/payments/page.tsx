@@ -4,6 +4,8 @@ import { formatDate } from '@/lib/utils';
 import { PaymentForm } from '@/app/ui/payment-form';
 import { Payment } from '@prisma/client';
 
+export const dynamic = 'force-dynamic';
+
 export default async function PaymentsPage() {
     const session = await auth();
     if (!session?.user?.email) return null;
