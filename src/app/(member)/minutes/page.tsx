@@ -24,9 +24,14 @@ export default async function MinutesPage() {
                             </p>
                             <div style={{ whiteSpace: 'pre-wrap', marginBottom: '1rem' }}>{doc.content}</div>
                             {doc.fileName && (
-                                <a href={`/api/documents/${doc.id}/download`} className="btn btn-secondary" style={{ display: 'inline-block', fontSize: '0.9rem', padding: '0.25rem 0.75rem' }}>
-                                    Download {doc.fileName}
-                                </a>
+                                <div className="flex gap-sm">
+                                    <a href={`/api/documents/${doc.id}/download?inline=true`} target="_blank" className="btn btn-primary" style={{ display: 'inline-block', fontSize: '0.9rem', padding: '0.25rem 0.75rem' }}>
+                                        View
+                                    </a>
+                                    <a href={`/api/documents/${doc.id}/download`} className="btn btn-secondary" style={{ display: 'inline-block', fontSize: '0.9rem', padding: '0.25rem 0.75rem' }}>
+                                        Download
+                                    </a>
+                                </div>
                             )}
                         </div>
                     ))}

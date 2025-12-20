@@ -17,9 +17,12 @@ export async function GET(
         return notFound();
     }
 
+    const { searchParams } = new URL(request.url);
+    const inline = searchParams.get('inline') === 'true';
+
     const headers = new Headers();
     headers.set('Content-Type', document.mimeType || 'application/octet-stream');
-    headers.set('Content-Disposition', `attachment; filename="${document.fileName}"`);
+    headers.set('Content-Disposition', `${inline ? 'inline' : 'attachment'}; filename="${document.fileName}"`);
 
     return new NextResponse(new Uint8Array(document.fileData), {
         status: 200,
