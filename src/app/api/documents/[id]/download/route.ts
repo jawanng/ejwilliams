@@ -21,7 +21,7 @@ export async function GET(
     headers.set('Content-Type', document.mimeType || 'application/octet-stream');
     headers.set('Content-Disposition', `attachment; filename="${document.fileName}"`);
 
-    return new NextResponse(document.fileData, {
+    return new NextResponse(new Uint8Array(document.fileData), {
         status: 200,
         headers,
     });
