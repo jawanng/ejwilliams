@@ -4,8 +4,10 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    props: { params: Promise<{ id: string }> }
 ) {
+    const params = await props.params;
+
     const document = await prisma.document.findUnique({
         where: { id: params.id },
         select: { fileData: true, mimeType: true, fileName: true },
