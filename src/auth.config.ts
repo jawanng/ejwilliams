@@ -16,11 +16,8 @@ export const authConfig = {
             const isOnAdmin = nextUrl.pathname.startsWith('/admin');
 
             if (isOnAdmin) {
-                if (isLoggedIn) {
-                    // TODO: Check for admin role
-                    return true;
-                }
-                return false; // Redirect unauthenticated users to login page
+                if (isLoggedIn && auth?.user?.role === 'ADMIN') return true;
+                return false; // Redirect unauthenticated users or non-admins
             }
 
             if (isOnDashboard) {
@@ -28,6 +25,18 @@ export const authConfig = {
                 return false; // Redirect unauthenticated users to login page
             }
             return true;
+        },
+        async jwt({ token, user }) {
+            if (user) {
+                token.role = user.role;
+            }
+            return token;
+        },
+        async session({ session, token }) {
+            if (token && session.user) {
+                session.user.role = token.role as string;
+            }
+            return session;
         },
     },
     providers: [], // Add providers with an empty array for now
