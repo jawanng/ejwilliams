@@ -8,7 +8,13 @@ const initialState = {
     errors: {},
 };
 
-export default function EditUserForm({ user, updateUser }: { user: User, updateUser: any }) {
+// Define the shape of the state based on what actions.ts returns
+type FormState = {
+    message?: string;
+    errors?: Record<string, string[]>;
+};
+
+export default function EditUserForm({ user, updateUser }: { user: User, updateUser: (prevState: FormState, formData: FormData) => Promise<FormState> }) {
     // @ts-expect-error useFormState type mismatch
     const [state, dispatch] = useFormState(updateUser, initialState);
 

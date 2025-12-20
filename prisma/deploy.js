@@ -11,7 +11,7 @@ try {
         env: process.env
     });
     console.log("✅ Database schema synced.");
-} catch (e) {
+} catch {
     console.error("❌ DB Push failed.");
     process.exit(1);
 }
@@ -27,7 +27,7 @@ try {
         env: process.env
     });
     console.log("✅ Database seeded successfully.");
-} catch (e) {
+} catch {
     console.error("❌ Seeding failed.");
     process.exit(1);
 }
