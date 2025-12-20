@@ -27,8 +27,12 @@ steps:
       - '--'
       - 'npx'
       - 'prisma@5.22.0'
-      - 'migrate'
-      - 'deploy'
+      - '--'
+      - 'npx'
+      - 'prisma@5.22.0'
+      - 'db'
+      - 'push'
+      - '--accept-data-loss'
 
   # 4. Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
