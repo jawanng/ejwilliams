@@ -6,6 +6,7 @@ import { prisma } from '@/lib/prisma';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
+import bcrypt from 'bcryptjs';
 
 export async function authenticate(
     prevState: string | undefined,
@@ -113,7 +114,7 @@ export async function createDocument(prevState: FormState, formData: FormData) {
             },
         });
     } catch (error) {
-         // console.error(error);
+        // console.error(error);
         return {
             message: 'Database Error: Failed to Create Document.',
         };
@@ -140,7 +141,7 @@ export async function createPayment(prevState: FormState | undefined, formData: 
         });
         revalidatePath('/payments');
     } catch (error) {
-         // console.error(error);
+        // console.error(error);
         return { message: 'Database Error: Failed to Process Payment.' };
     }
 }
@@ -164,6 +165,111 @@ export async function deleteEvent(id: string, formData: FormData) {
         });
         revalidatePath('/events');
         revalidatePath('/admin/events');
+    } catch (error) {
+        throw error;
+    }
+}
+
+const UserSchema = z.object({
+    name: z.string().min(1, 'Name is required'),
+    email: z.string().email('Invalid email address'),
+    password: z.string().min(6, 'Password must be at least 6 characters').optional(),
+    role: z.enum(['ADMIN', 'MEMBER'], { message: 'Please select a valid role' }),
+});
+
+export async function createUser(prevState: FormState, formData: FormData) {
+    const validatedFields = UserSchema.safeParse({
+        name: formData.get('name'),
+        email: formData.get('email'),
+        password: formData.get('password'),
+        role: formData.get('role'),
+    });
+
+    if (!validatedFields.success) {
+        return {
+            errors: validatedFields.error.flatten().fieldErrors,
+            message: 'Missing Fields. Failed to Create User.',
+        };
+    }
+
+    const { name, email, password, role } = validatedFields.data;
+
+    if (!password) {
+        return {
+            message: 'Password is required for new users.',
+        };
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    try {
+        await prisma.user.create({
+            data: {
+                name,
+                email,
+                password: hashedPassword,
+                role,
+            },
+        });
+    } catch (error) {
+        return {
+            message: 'Database Error: Failed to Create User (Email might already exist).',
+        };
+    }
+
+    revalidatePath('/admin/users');
+    redirect('/admin/users');
+}
+
+export async function updateUser(id: string, prevState: FormState, formData: FormData) {
+    const validatedFields = UserSchema.safeParse({
+        name: formData.get('name'),
+        email: formData.get('email'),
+        password: formData.get('password'), // Optional in schema, logic handled below
+        role: formData.get('role'),
+    });
+
+    if (!validatedFields.success) {
+        return {
+            errors: validatedFields.error.flatten().fieldErrors,
+            message: 'Missing Fields. Failed to Update User.',
+        };
+    }
+
+    const { name, email, password, role } = validatedFields.data;
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const updateData: any = {
+        name,
+        email,
+        role,
+    };
+
+    if (password && password.length >= 6) {
+        updateData.password = await bcrypt.hash(password, 10);
+    }
+
+    try {
+        await prisma.user.update({
+            where: { id },
+            data: updateData,
+        });
+    } catch (error) {
+        return {
+            message: 'Database Error: Failed to Update User.',
+        };
+    }
+
+    revalidatePath('/admin/users');
+    redirect('/admin/users');
+}
+
+export async function deleteUser(id: string, formData: FormData) {
+    try {
+        await prisma.user.delete({
+            where: { id },
+        });
+        revalidatePath('/admin/users');
     } catch (error) {
         throw error;
     }
