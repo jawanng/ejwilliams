@@ -3,6 +3,8 @@ import { formatDate } from '@/lib/utils';
 import { Event } from '@prisma/client';
 import { DeleteEventButton } from '@/app/ui/delete-event-button';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminEventsPage() {
     const events = await prisma.event.findMany({
         orderBy: { date: 'desc' },

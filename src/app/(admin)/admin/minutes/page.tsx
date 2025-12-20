@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { formatDate } from '@/lib/utils';
 import { deleteDocument } from '@/app/lib/actions';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminMinutesPage() {
     const documents = await prisma.document.findMany({
         orderBy: { date: 'desc' },
@@ -14,7 +16,7 @@ export default async function AdminMinutesPage() {
                 <h1>Manage Documents</h1>
                 <Link href="/admin/minutes/new" className="btn btn-primary">Create Document</Link>
             </div>
-            
+
             {documents.length === 0 ? (
                 <p>No documents found.</p>
             ) : (

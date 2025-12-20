@@ -2,6 +2,8 @@ import { prisma } from '@/lib/prisma';
 import { formatDate } from '@/lib/utils';
 import { Payment, User } from '@prisma/client';
 
+export const dynamic = 'force-dynamic';
+
 type PaymentWithUser = Payment & { user: User };
 
 export default async function AdminPaymentsPage() {
