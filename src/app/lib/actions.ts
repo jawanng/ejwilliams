@@ -86,9 +86,12 @@ export async function createEvent(prevState: FormState, formData: FormData) {
 
 const CreateDocumentSchema = z.object({
     title: z.string().min(1),
-    content: z.string().min(1),
+    content: z.string().optional(),
     type: z.string(),
     date: z.string(),
+    file: z.custom<File>((val) => {
+        return typeof val === 'object' && val !== null && 'arrayBuffer' in val;
+    }, "Invalid file").optional(),
 });
 
 export async function createDocument(prevState: FormState, formData: FormData) {
@@ -97,6 +100,7 @@ export async function createDocument(prevState: FormState, formData: FormData) {
         content: formData.get('content'),
         type: formData.get('type'),
         date: formData.get('date'),
+        file: formData.get('file'),
     });
 
     if (!validatedFields.success) {
@@ -106,15 +110,29 @@ export async function createDocument(prevState: FormState, formData: FormData) {
         };
     }
 
-    const { title, content, type, date } = validatedFields.data;
+    const { title, content, type, date, file } = validatedFields.data;
+
+    let fileData: Buffer | null = null;
+    let fileName: string | null = null;
+    let mimeType: string | null = null;
+
+    if (file && file.size > 0) {
+        const arrayBuffer = await file.arrayBuffer();
+        fileData = Buffer.from(arrayBuffer);
+        fileName = file.name;
+        mimeType = file.type;
+    }
 
     try {
         await prisma.document.create({
             data: {
                 title,
-                content,
+                content: content || (fileName ? `File: ${fileName}` : ''),
                 type,
                 date: new Date(date),
+                fileName,
+                mimeType,
+                fileData,
             },
         });
     } catch (error) {

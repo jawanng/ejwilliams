@@ -22,8 +22,12 @@ export default function NewDocumentPage() {
                         {state?.errors?.title && <p style={{ color: 'red' }}>{state.errors.title.join(', ')}</p>}
                     </div>
                     <div>
-                        <label style={{ display: 'block', marginBottom: '0.5rem' }}>Content</label>
-                        <textarea name="content" className="input" required style={{ width: '100%', padding: '0.5rem', minHeight: '150px' }} placeholder="Enter content or URL" />
+                        <label style={{ display: 'block', marginBottom: '0.5rem' }}>Upload File (PDF, Word, Excel)</label>
+                        <input type="file" name="file" className="input" style={{ width: '100%', padding: '0.5rem' }} accept=".pdf,.doc,.docx,.xls,.xlsx" />
+                    </div>
+                    <div>
+                        <label style={{ display: 'block', marginBottom: '0.5rem' }}>Content (Optional if file uploaded)</label>
+                        <textarea name="content" className="input" style={{ width: '100%', padding: '0.5rem', minHeight: '150px' }} placeholder="Enter content or URL" />
                         {state?.errors?.content && <p style={{ color: 'red' }}>{state.errors.content.join(', ')}</p>}
                     </div>
                     <div>

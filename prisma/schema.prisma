@@ -36,6 +36,11 @@ model Document {
   type      String   // MINUTE, AGENDA, REPORT, OTHER
   date      DateTime // Date of the meeting or report
   createdAt DateTime @default(now())
+  
+  // File Upload Support
+  fileName  String?
+  mimeType  String?
+  fileData  Bytes?
 }
 
 model Payment {

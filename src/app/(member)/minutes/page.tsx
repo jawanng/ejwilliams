@@ -22,7 +22,12 @@ export default async function MinutesPage() {
                             <p className="text-sm" style={{ color: 'var(--color-text-light)', marginBottom: '0.5rem' }}>
                                 {formatDate(doc.date)}
                             </p>
-                            <div style={{ whiteSpace: 'pre-wrap' }}>{doc.content}</div>
+                            <div style={{ whiteSpace: 'pre-wrap', marginBottom: '1rem' }}>{doc.content}</div>
+                            {doc.fileName && (
+                                <a href={`/api/documents/${doc.id}/download`} className="btn btn-secondary" style={{ display: 'inline-block', fontSize: '0.9rem', padding: '0.25rem 0.75rem' }}>
+                                    Download {doc.fileName}
+                                </a>
+                            )}
                         </div>
                     ))}
                 </div>
