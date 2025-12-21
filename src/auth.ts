@@ -20,7 +20,8 @@ import Email from "next-auth/providers/email"
 
 export const { auth, signIn, signOut, handlers } = NextAuth({
     ...authConfig,
-    adapter: PrismaAdapter(prisma),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    adapter: PrismaAdapter(prisma) as any,
     session: { strategy: "jwt" }, // Keep using JWT for simplicity, even with adapter
     providers: [
         Email({
