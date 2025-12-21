@@ -30,7 +30,7 @@ export default function LoginPage() {
 
                 {emailMode ? (
                     <form action={signInWithEmail}>
-                        <p className="text-sm text-center mb-4">Enter your email and we'll send you a link to sign in instantly.</p>
+                        <p className="text-sm text-center mb-4">Enter your email and we&apos;ll send you a link to sign in instantly.</p>
                         <div className="flex flex-col gap-md">
                             <div>
                                 <label htmlFor="magic-email" style={{ display: 'block', marginBottom: '0.5rem' }}>Email</label>
