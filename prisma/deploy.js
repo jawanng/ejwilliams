@@ -19,8 +19,8 @@ try {
 // 2. Database Seeding
 console.log("\n🌱 Running Database Seed...");
 try {
-    console.log("   Installing bcryptjs...");
-    execSync('npm install bcryptjs --no-save', { stdio: 'ignore' });
+    // bcryptjs is already installed in the image via package.json
+    // execSync('npm install bcryptjs --no-save', { stdio: 'ignore' });
 
     execSync('node prisma/seed.js', {
         stdio: 'inherit',
