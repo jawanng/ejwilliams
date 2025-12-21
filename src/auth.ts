@@ -15,9 +15,25 @@ async function getUser(email: string) {
     }
 }
 
+import { PrismaAdapter } from "@auth/prisma-adapter"
+import Email from "next-auth/providers/email"
+
 export const { auth, signIn, signOut, handlers } = NextAuth({
     ...authConfig,
+    adapter: PrismaAdapter(prisma),
+    session: { strategy: "jwt" }, // Keep using JWT for simplicity, even with adapter
     providers: [
+        Email({
+            server: {
+                host: process.env.EMAIL_SERVER_HOST,
+                port: Number(process.env.EMAIL_SERVER_PORT),
+                auth: {
+                    user: process.env.EMAIL_SERVER_USER,
+                    pass: process.env.EMAIL_SERVER_PASSWORD,
+                },
+            },
+            from: process.env.EMAIL_FROM,
+        }),
         Credentials({
             async authorize(credentials) {
                 const parsedCredentials = z
@@ -27,7 +43,7 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
                 if (parsedCredentials.success) {
                     const { email, password } = parsedCredentials.data;
                     const user = await getUser(email);
-                    if (!user) return null;
+                    if (!user || !user.password) return null; // Ensure user has a password set
                     const passwordsMatch = await bcrypt.compare(password, user.password);
 
                     if (passwordsMatch) return user;
