@@ -156,3 +156,19 @@ blockquote {
 .accent-bg {
     background-color: var(--color-secondary) !important;
 }
+
+/* Hotfix for Navigation White Box Bug */
+.site-header .navigation, 
+.site-header .navigation ul,
+.site-header .navigation li,
+.site-header .navigation a {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* Ensure mobile menu doesn't break */
+@media (max-width: 767px) {
+  .site-header .navigation ul {
+     background-color: var(--color-primary) !important;
+  }
+}

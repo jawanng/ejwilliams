@@ -51,12 +51,12 @@ export default function Header({ session, handleSignOut }: HeaderProps) {
             </div>
 
             {/* Main Menu Wrapper */}
-            <div className="main-menu-wrapper" style={{ backgroundColor: 'var(--color-primary)' }}>
+            <div className="custom-menu-wrapper" style={{ backgroundColor: 'var(--color-primary)' }}>
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
-                            <nav className={`navigation ${isMenuOpen ? 'd-block' : 'd-none d-md-block'}`}>
-                                <ul className="sf-menu nav list-unstyled d-flex flex-column flex-md-row">
+                            <nav className={`lodge-navigation bg-transparent ${isMenuOpen ? 'd-block' : 'd-none d-md-block'}`}>
+                                <ul className="nav list-unstyled d-flex flex-column flex-md-row bg-transparent">
                                     <li className={`nav-item ${pathname === '/' ? 'active' : ''}`}>
                                         <Link href="/" className="nav-link text-white">Home</Link>
                                     </li>

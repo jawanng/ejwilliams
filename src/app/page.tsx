@@ -4,29 +4,32 @@ export default function Home() {
   return (
     <>
       {/* Hero Section - Static Parallax Style */}
-      <div className="hero-slider clearfix" style={{ height: '600px', overflow: 'hidden', position: 'relative' }}>
+      <div className="hero-section clearfix" style={{ minHeight: '600px', overflow: 'hidden', position: 'relative' }}>
         <div style={{
-          backgroundImage: 'url(https://placehold.co/1280x635/00205B/C5B358?text=E.+Jerry+Williams+Lodge+No.+141)',
+          backgroundImage: 'url(https://placehold.co/1280x635/00205B/C5B358?text=%20)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          height: '100%',
+          minHeight: '600px',
           width: '100%',
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
           textAlign: 'center',
-          color: '#fff'
+          color: '#fff',
+          gap: '40px',
+          padding: '20px'
         }}>
           <div className="container">
-            <h1 className="display-4 text-white font-weight-bold" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.6)' }}>
+            <h1 className="hero-title text-white font-weight-bold" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.6)', lineHeight: '1.2', marginBottom: '30px', marginTop: '0', position: 'relative', fontSize: '3.5rem' }}>
               Making Good Men Better
             </h1>
-            <p className="lead" style={{ fontSize: '1.5rem', textShadow: '1px 1px 2px rgba(0,0,0,0.6)' }}>
+            <p className="lead" style={{ fontSize: '1.5rem', textShadow: '1px 1px 2px rgba(0,0,0,0.6)', marginBottom: '40px', position: 'relative' }}>
               Welcome to E. Jerry Williams Lodge No. 141
             </p>
             <div className="mt-4">
               <Link href="/join" className="btn btn-primary btn-lg me-3">Become a Member</Link>
-              <Link href="/events" className="btn btn-outline-light btn-lg">View Events</Link>
+              <Link href="/events" className="btn btn-outline-light btn-lg" style={{ borderWidth: '2px', borderColor: '#ffffff', color: '#ffffff', borderStyle: 'solid', opacity: '1' }}>View Events</Link>
             </div>
           </div>
         </div>
