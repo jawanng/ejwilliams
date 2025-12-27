@@ -58,7 +58,8 @@ export default function AboutPage() {
                                     This legacy traces back to 1775, when Prince Hall and fourteen other men of color were initiated into Lodge No. 441 of the Irish Registry attached to the 38th Foot. Despite facing racial barriers in the colonial era, Hall persevered, eventually receiving a charter from the Grand Lodge of England in 1784. As noted by <a href="https://www.wgbh.org/news/local/2025-06-11/in-1775-bostons-prince-hall-broke-freemasonrys-racial-barrier-his-global-movement-marches-on" target="_blank" rel="noopener noreferrer" className="text-decoration-underline">WGBH</a>, Hall&apos;s movement broke Freemasonry&apos;s racial barrier and established a global tradition of brotherhood and service that marches on today.
                                 </p>
                                 <div className="mt-4">
-                                    <Link href="/join" className="btn btn-primary">Join Our Legacy</Link>
+                                    <Link href="/join" className="btn btn-primary me-2">Join Our Legacy</Link>
+                                    <Link href="/history" className="btn btn-outline-primary">View Full History</Link>
                                 </div>
                             </div>
                         </div>
