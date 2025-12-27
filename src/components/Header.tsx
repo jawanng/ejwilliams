@@ -26,9 +26,7 @@ export default function Header({ session, handleSignOut }: HeaderProps) {
                         <div className="col-lg-6 col-md-6 col-sm-8">
                             <h1 className="logo" style={{ margin: 0, padding: 0, border: 'none', background: 'transparent' }}>
                                 <Link href="/" className="text-decoration-none" style={{ textDecoration: 'none', border: 'none', background: 'transparent' }}>
-                                    <span style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#333', display: 'inline-block' }}>
-                                        E. Jerry Williams Lodge No. 141
-                                    </span>
+                                    <img src="/images/logo-new.png" alt="E. Jerry Williams Lodge No. 141" style={{ height: '80px', width: 'auto' }} />
                                 </Link>
                             </h1>
                         </div>
