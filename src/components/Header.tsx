@@ -36,7 +36,6 @@ export default function Header({ session, handleSignOut }: HeaderProps) {
                             <ul className="top-navigation hidden-sm hidden-xs padding-t0 d-none d-md-block text-end">
                                 <li><Link href="/join">Join Us</Link></li>
                                 <li><Link href="/events">Calendar</Link></li>
-                                <li><Link href="/donate">Donate</Link></li>
                             </ul>
                             <button
                                 className="d-block d-md-none menu-toggle btn btn-link ms-auto"
