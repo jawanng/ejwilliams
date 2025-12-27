@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 
 export default function AboutPage() {
@@ -63,7 +64,7 @@ export default function AboutPage() {
                         <div className="row mb-5 bg-light py-5 rounded">
                             <div className="col-12 text-center mb-5">
                                 <h2 className="text-primary">Our Mission & Values</h2>
-                                <p className="lead text-muted">The three great tenets of a Mason's profession.</p>
+                                <p className="lead text-muted">The three great tenets of a Mason&apos;s profession.</p>
                             </div>
                             <div className="col-md-4 text-center mb-4 mb-md-0">
                                 <div className="p-3">

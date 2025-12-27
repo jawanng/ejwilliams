@@ -72,7 +72,7 @@ export async function createEvent(prevState: FormState, formData: FormData) {
                 isPublic: isPublic === 'on',
             },
         });
-    } catch (error) {
+    } catch (_error) {
         // console.error(error); 
         return {
             message: 'Database Error: Failed to Create Event.',
@@ -135,7 +135,7 @@ export async function createDocument(prevState: FormState, formData: FormData) {
                 fileData,
             },
         });
-    } catch (error) {
+    } catch (_error) {
         // console.error(error);
         return {
             message: 'Database Error: Failed to Create Document.',
@@ -162,7 +162,7 @@ export async function createPayment(prevState: FormState | undefined, formData: 
             },
         });
         revalidatePath('/payments');
-    } catch (error) {
+    } catch (_error) {
         // console.error(error);
         return { message: 'Database Error: Failed to Process Payment.' };
     }
@@ -233,7 +233,7 @@ export async function createUser(prevState: FormState, formData: FormData) {
                 role,
             },
         });
-    } catch (error) {
+    } catch (_error) {
         return {
             message: 'Database Error: Failed to Create User (Email might already exist).',
         };
@@ -276,7 +276,7 @@ export async function updateUser(id: string, prevState: FormState, formData: For
             where: { id },
             data: updateData,
         });
-    } catch (error) {
+    } catch (_error) {
         return {
             message: 'Database Error: Failed to Update User.',
         };
