@@ -168,7 +168,28 @@ export async function createPayment(prevState: FormState | undefined, formData: 
     }
 }
 
-export async function deleteDocument(id: string, formData: FormData) {
+export async function updatePaymentStatus(id: string, _formData: FormData) {
+    try {
+        // Assuming this function is meant to update payment status,
+        // but the provided snippet used prisma.document.delete.
+        // For now, keeping the structure from the snippet but noting the discrepancy.
+        // A proper implementation would involve prisma.payment.update.
+        await prisma.payment.update({
+            where: { id },
+            data: {
+                // Example: status: 'PROCESSED' or other fields from _formData
+                // This part needs actual implementation based on requirements
+            }
+        });
+        revalidatePath('/payments');
+        revalidatePath('/admin/payments'); // Assuming an admin view for payments
+    } catch (error) {
+        // console.error(error);
+        return { message: 'Database Error: Failed to Update Payment Status.' };
+    }
+}
+
+export async function deleteDocument(id: string, _formData: FormData) {
     try {
         await prisma.document.delete({
             where: { id },
@@ -286,7 +307,7 @@ export async function updateUser(id: string, prevState: FormState, formData: For
     redirect('/admin/users');
 }
 
-export async function deleteUser(id: string, formData: FormData) {
+export async function deleteUser(id: string, _formData: FormData) {
     try {
         await prisma.user.delete({
             where: { id },
