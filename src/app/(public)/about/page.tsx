@@ -35,7 +35,7 @@ export default function AboutPage() {
                         <div className="row mb-5">
                             <div className="col-lg-6 mb-4 mb-lg-0">
                                 <img
-                                    src="https://placehold.co/800x600/00205B/FFF?text=Historical+Lodge+Photo"
+                                    src="/images/history-early-ejw.jpg"
                                     alt="Lodge History"
                                     className="img-fluid rounded shadow-sm"
                                 />
@@ -110,14 +110,15 @@ export default function AboutPage() {
                                 <div className="card border-0 shadow-sm h-100 text-center">
                                     <div className="card-body">
                                         <img
-                                            src="https://placehold.co/150x150/00205B/C5B358?text=WM"
+                                            src="/images/wm-miguel.jpg"
                                             className="rounded-circle mb-3 border border-3 border-warning"
                                             alt="Worshipful Master"
                                             width="150"
                                             height="150"
+                                            style={{ objectFit: 'cover' }}
                                         />
                                         <h5 className="card-title text-primary font-weight-bold">Worshipful Master</h5>
-                                        <p className="card-text text-muted">[Name Here]</p>
+                                        <p className="card-text text-muted">Miguel Espeut</p>
                                     </div>
                                 </div>
                             </div>
@@ -128,7 +129,7 @@ export default function AboutPage() {
                                     <div className="card-body">
                                         <img src="https://placehold.co/100x100?text=SW" className="rounded-circle mb-3" alt="Senior Warden" />
                                         <h6 className="card-title font-weight-bold">Senior Warden</h6>
-                                        <p className="card-text small text-muted">[Name Here]</p>
+                                        <p className="card-text small text-muted">Sherrod Thomas</p>
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +138,7 @@ export default function AboutPage() {
                                     <div className="card-body">
                                         <img src="https://placehold.co/100x100?text=JW" className="rounded-circle mb-3" alt="Junior Warden" />
                                         <h6 className="card-title font-weight-bold">Junior Warden</h6>
-                                        <p className="card-text small text-muted">[Name Here]</p>
+                                        <p className="card-text small text-muted">Markael Jenkins</p>
                                     </div>
                                 </div>
                             </div>
@@ -146,7 +147,7 @@ export default function AboutPage() {
                                     <div className="card-body">
                                         <img src="https://placehold.co/100x100?text=Sec" className="rounded-circle mb-3" alt="Secretary" />
                                         <h6 className="card-title font-weight-bold">Secretary</h6>
-                                        <p className="card-text small text-muted">[Name Here]</p>
+                                        <p className="card-text small text-muted">PM Daryl J. Collins</p>
                                     </div>
                                 </div>
                             </div>
@@ -155,7 +156,7 @@ export default function AboutPage() {
                                     <div className="card-body">
                                         <img src="https://placehold.co/100x100?text=Treas" className="rounded-circle mb-3" alt="Treasurer" />
                                         <h6 className="card-title font-weight-bold">Treasurer</h6>
-                                        <p className="card-text small text-muted">[Name Here]</p>
+                                        <p className="card-text small text-muted">Terrance Wakefield</p>
                                     </div>
                                 </div>
                             </div>

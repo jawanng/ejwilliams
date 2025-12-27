@@ -109,14 +109,14 @@ export default function Home() {
                   we invite you to explore our site and learn about our works.
                 </p>
                 <div className="mt-4 border-start border-4 border-primary ps-3">
-                  <p className="mb-0 fw-bold">Worshipful Master</p>
+                  <p className="mb-0 fw-bold">Worshipful Master Miguel Espeut</p>
                   <small className="text-muted">E. Jerry Williams Lodge No. 141</small>
                 </div>
               </div>
               <div className="col-lg-4 mt-4 mt-lg-0">
                 <div className="card border-0 bg-light p-3 text-center">
-                  <img src="https://placehold.co/300x300?text=WM+Photo" alt="WM" className="img-fluid rounded-circle mx-auto mb-3" style={{ width: '150px', height: '150px', objectFit: 'cover' }} />
-                  <h5>Worshipful Master</h5>
+                  <img src="/images/wm-miguel.jpg" alt="WM Miguel Espeut" className="img-fluid rounded-circle mx-auto mb-3" style={{ width: '150px', height: '150px', objectFit: 'cover' }} />
+                  <h5>Worshipful Master Miguel Espeut</h5>
                 </div>
               </div>
             </div>
