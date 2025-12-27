@@ -157,71 +157,70 @@ export default function HistoryPage() {
                                 <h2 className="text-primary">Past Masters</h2>
                                 <p className="lead text-muted">Honoring those who have served in the East.</p>
                             </div>
-                            <div className="col-md-8 offset-md-2">
+                            <div className="col-12">
                                 <div className="card border-0 shadow-sm">
-                                    <div className="card-body">
-                                        <div className="table-responsive">
-                                            <table className="table table-hover">
-                                                <thead className="table-dark">
-                                                    <tr>
-                                                        <th>Year</th>
-                                                        <th>Worshipful Master</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr><td>2023-2024</td><td>Lewis Woodard III</td></tr>
-                                                    <tr><td>2022-2023</td><td>Walter Armstrong</td></tr>
-                                                    <tr><td>2021-2022</td><td>Claymon Strong</td></tr>
-                                                    <tr><td>2020-2021</td><td>Rashaun Gregory</td></tr>
-                                                    <tr><td>2019-2020</td><td>Rashaun Gregory</td></tr>
-                                                    <tr><td>2018-2019</td><td>Calvin Whitfield</td></tr>
-                                                    <tr><td>2017-2018</td><td>Eric Jones</td></tr>
-                                                    <tr><td>2016-2017</td><td>Dwayne Martin</td></tr>
-                                                    <tr><td>2016</td><td>Claud Williams</td></tr>
-                                                    <tr><td>2016</td><td>Thomas Mays</td></tr>
-                                                    <tr><td>2015-2016</td><td>Marcus Johnson</td></tr>
-                                                    <tr><td>2014-2015</td><td>Kevin McDonald</td></tr>
-                                                    <tr><td>2014</td><td>Rochester Bunn *</td></tr>
-                                                    <tr><td>2013-2014</td><td>Warren R. Jones</td></tr>
-                                                    <tr><td>2012-2013</td><td>Ron&apos;Nel N. Owens</td></tr>
-                                                    <tr><td>2011-2012</td><td>Stephen B. Bush</td></tr>
-                                                    <tr><td>2010-2011</td><td>Antonio L. Abney, Jr *</td></tr>
-                                                    <tr><td>2009-2010</td><td>Matthew M. Jones</td></tr>
-                                                    <tr><td>2010</td><td>Edwin L. Scott *</td></tr>
-                                                    <tr><td>2008-2009</td><td>Jawann L. Graves</td></tr>
-                                                    <tr><td>2007-2008</td><td>Carlos E. Tingle</td></tr>
-                                                    <tr><td>2006-2007</td><td>Alvin J. Pinkney</td></tr>
-                                                    <tr><td>2006</td><td>Austin C. Dickerson</td></tr>
-                                                    <tr><td>2005-2006</td><td>Antonio C. Sturgis</td></tr>
-                                                    <tr><td>2005</td><td>Raymond E. Riley, Sr. *</td></tr>
-                                                    <tr><td>2004-2005</td><td>Michael E. Stephens</td></tr>
-                                                    <tr><td>2003-2004</td><td>Henry L. Foy *</td></tr>
-                                                    <tr><td>2002-2003</td><td>James T. Isley</td></tr>
-                                                    <tr><td>2001-2002</td><td>Herman Suggs II</td></tr>
-                                                    <tr><td>2000-2001</td><td>Warren L. Broomer</td></tr>
-                                                    <tr><td>1999-2000</td><td>John T. Blakeney</td></tr>
-                                                    <tr><td>1998-1999</td><td>Richard &quot;Sonny&quot; Hill</td></tr>
-                                                    <tr><td>1997-1998</td><td>Steven G. Collier</td></tr>
-                                                    <tr><td>1996-1997</td><td>James Graham, Jr.</td></tr>
-                                                    <tr><td>1995-1996</td><td>J. LeShayne Hoffman</td></tr>
-                                                    <tr><td>1994-1995</td><td>Alfred A. Bosman II *</td></tr>
-                                                    <tr><td>1993-1994</td><td>Daryl J. Collins</td></tr>
-                                                    <tr><td>1992-1993</td><td>Alfred E. Smith, Sr.</td></tr>
-                                                    <tr><td>1992</td><td>Roy A. Maggett *</td></tr>
-                                                    <tr><td>1992</td><td>Edward Brown (Trestle Board #176)</td></tr>
-                                                    <tr><td>1991-1992</td><td>Clarence E. McIntosh</td></tr>
-                                                    <tr><td>1990-1991</td><td>Joshua P. Roberson</td></tr>
-                                                    <tr><td>1990-1991</td><td>Douglas A. Taylor (Ernest W. Lyons #107) *</td></tr>
-                                                    <tr><td>1989-1990</td><td>Albert J. Truesdale</td></tr>
-                                                    <tr><td>1988-1989</td><td>Dimitri M. Brown *</td></tr>
-                                                    <tr><td>1987-1988</td><td>MWPGM Robert J. Poindexter *</td></tr>
-                                                    <tr><td>1986-1987</td><td>Richard &quot;Sonny&quot; Hill</td></tr>
-                                                    <tr><td>1985-1986</td><td>Warren L. Broomer</td></tr>
-                                                    <tr><td>1982</td><td>Allan A. Evans (E. W. Armstrong #140)</td></tr>
-                                                    <tr><td>1976</td><td>Leroy A. Lassiter (Nero Prince Hall #126) *</td></tr>
-                                                    <tr><td>1976-1979</td><td>Ronald Dickens (Donald E. Jones #121)</td></tr>
-                                                </tbody>
-                                            </table>
+                                    <div className="card-body bg-light">
+                                        <div className="row g-3">
+                                            {[
+                                                { year: "2023-2024", name: "Lewis Woodard III" },
+                                                { year: "2022-2023", name: "Walter Armstrong" },
+                                                { year: "2021-2022", name: "Claymon Strong" },
+                                                { year: "2020-2021", name: "Rashaun Gregory" },
+                                                { year: "2019-2020", name: "Rashaun Gregory" },
+                                                { year: "2018-2019", name: "Calvin Whitfield" },
+                                                { year: "2017-2018", name: "Eric Jones" },
+                                                { year: "2016-2017", name: "Dwayne Martin" },
+                                                { year: "2016", name: "Claud Williams" },
+                                                { year: "2016", name: "Thomas Mays" },
+                                                { year: "2015-2016", name: "Marcus Johnson" },
+                                                { year: "2014-2015", name: "Kevin McDonald" },
+                                                { year: "2014", name: "Rochester Bunn *" },
+                                                { year: "2013-2014", name: "Warren R. Jones" },
+                                                { year: "2012-2013", name: "Ron'Nel N. Owens" },
+                                                { year: "2011-2012", name: "Stephen B. Bush" },
+                                                { year: "2010-2011", name: "Antonio L. Abney, Jr *" },
+                                                { year: "2009-2010", name: "Matthew M. Jones" },
+                                                { year: "2010", name: "Edwin L. Scott *" },
+                                                { year: "2008-2009", name: "Jawann L. Graves" },
+                                                { year: "2007-2008", name: "Carlos E. Tingle" },
+                                                { year: "2006-2007", name: "Alvin J. Pinkney" },
+                                                { year: "2006", name: "Austin C. Dickerson" },
+                                                { year: "2005-2006", name: "Antonio C. Sturgis" },
+                                                { year: "2005", name: "Raymond E. Riley, Sr. *" },
+                                                { year: "2004-2005", name: "Michael E. Stephens" },
+                                                { year: "2003-2004", name: "Henry L. Foy *" },
+                                                { year: "2002-2003", name: "James T. Isley" },
+                                                { year: "2001-2002", name: "Herman Suggs II" },
+                                                { year: "2000-2001", name: "Warren L. Broomer" },
+                                                { year: "1999-2000", name: "John T. Blakeney" },
+                                                { year: "1998-1999", name: "Richard \"Sonny\" Hill" },
+                                                { year: "1997-1998", name: "Steven G. Collier" },
+                                                { year: "1996-1997", name: "James Graham, Jr." },
+                                                { year: "1995-1996", name: "J. LeShayne Hoffman" },
+                                                { year: "1994-1995", name: "Alfred A. Bosman II *" },
+                                                { year: "1993-1994", name: "Daryl J. Collins" },
+                                                { year: "1992-1993", name: "Alfred E. Smith, Sr." },
+                                                { year: "1992", name: "Roy A. Maggett *" },
+                                                { year: "1992", name: "Edward Brown (Trestle Board #176)" },
+                                                { year: "1991-1992", name: "Clarence E. McIntosh" },
+                                                { year: "1990-1991", name: "Joshua P. Roberson" },
+                                                { year: "1990-1991", name: "Douglas A. Taylor (Ernest W. Lyons #107) *" },
+                                                { year: "1989-1990", name: "Albert J. Truesdale" },
+                                                { year: "1988-1989", name: "Dimitri M. Brown *" },
+                                                { year: "1987-1988", name: "MWPGM Robert J. Poindexter *" },
+                                                { year: "1986-1987", name: "Richard \"Sonny\" Hill" },
+                                                { year: "1985-1986", name: "Warren L. Broomer" },
+                                                { year: "1982", name: "Allan A. Evans (E. W. Armstrong #140)" },
+                                                { year: "1976", name: "Leroy A. Lassiter (Nero Prince Hall #126) *" },
+                                                { year: "1976-1979", name: "Ronald Dickens (Donald E. Jones #121)" }
+                                            ].map((pm, index) => (
+                                                <div key={index} className="col-md-6 col-lg-4">
+                                                    <div className="bg-white p-3 rounded shadow-sm h-100 d-flex justify-content-between align-items-center border border-1">
+                                                        <span className="fw-bold text-primary">{pm.year}</span>
+                                                        <span className="text-end text-muted small ms-2">{pm.name}</span>
+                                                    </div>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
