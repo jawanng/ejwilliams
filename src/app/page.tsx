@@ -87,10 +87,10 @@ export default function Home() {
                 </div>
                 <div className="col-md-4 mb-4">
                   <div className="img-thumbnail border-0 shadow-sm p-2 bg-white h-100 text-center">
-                    <Link href="/charity" className="d-block mb-3">
+                    <Link href="/community" className="d-block mb-3">
                       <img src="https://placehold.co/600x400/EEE/333?text=Community" alt="Community" className="img-fluid rounded" />
                     </Link>
-                    <h4><Link href="/charity" className="text-dark text-decoration-none">Community</Link></h4>
+                    <h4><Link href="/community" className="text-dark text-decoration-none">Community</Link></h4>
                     <p className="text-muted">We support local charities and community initiatives.</p>
                   </div>
                 </div>
