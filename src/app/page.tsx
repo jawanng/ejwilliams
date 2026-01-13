@@ -6,7 +6,7 @@ export default function Home() {
       {/* Hero Section - Static Parallax Style */}
       <div className="hero-section clearfix" style={{ minHeight: '600px', overflow: 'hidden', position: 'relative' }}>
         <div style={{
-          backgroundImage: 'url(https://placehold.co/1280x635/00205B/C5B358?text=%20)',
+          backgroundImage: 'url(/images/ejw2026.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           minHeight: '600px',
