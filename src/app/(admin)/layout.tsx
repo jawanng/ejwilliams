@@ -15,6 +15,7 @@ export default function AdminLayout({
                         <Link href="/admin/events" style={{ color: '#fff' }}>Events</Link>
                         <Link href="/admin/minutes" style={{ color: '#fff' }}>Minutes</Link>
                         <Link href="/admin/payments" style={{ color: '#fff' }}>Payments</Link>
+                        <Link href="/admin/community" style={{ color: '#fff' }}>Community</Link>
                         <Link href="/admin/users" style={{ color: '#fff', fontWeight: 'bold' }}>Users</Link>
                         <Link href="/" style={{ color: '#aaa', marginLeft: '20px' }}>Back to Site</Link>
                     </nav>

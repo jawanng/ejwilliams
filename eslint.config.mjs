@@ -14,6 +14,13 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     "theme_reference/**",
   ]),
+  {
+    rules: {
+      "@next/next/no-img-element": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;

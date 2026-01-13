@@ -63,6 +63,9 @@ export default function Header({ session, handleSignOut }: HeaderProps) {
                                     <li className={`nav-item ${pathname === '/events' ? 'active' : ''}`}>
                                         <Link href="/events" className="nav-link text-white">Events</Link>
                                     </li>
+                                    <li className={`nav-item ${pathname === '/community' ? 'active' : ''}`}>
+                                        <Link href="/community" className="nav-link text-white">Community</Link>
+                                    </li>
 
                                     {/* Auth Links */}
                                     {session?.user?.role === 'ADMIN' && (
