@@ -17,12 +17,15 @@ steps:
 
   # 3. Migrate Database (Neon - no proxy needed)
   - name: 'gcr.io/$PROJECT_ID/ejwilliams-app:$COMMIT_SHA'
-    entrypoint: 'node'
-    args: ['prisma/deploy.js']
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - 'node prisma/deploy.js'
     env:
       - 'DATABASE_URL=$_DATABASE_URL'
       - 'ADMIN_PASSWORD=$_ADMIN_PASSWORD'
       - 'ADMIN_EMAIL=$_ADMIN_EMAIL'
+    user: 'root'
 
   # 4. Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
