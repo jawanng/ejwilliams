@@ -3,16 +3,16 @@ const { execSync } = require('child_process');
 
 console.log("🚀 Starting deployment orchestration...");
 
-// 1. Database Push (Migration)
-console.log("\n📦 Running Prisma DB Push...");
+// 1. Database Migration
+console.log("\n📦 Running Prisma Migrate Deploy...");
 try {
-    execSync('npx prisma@5.22.0 db push --accept-data-loss --skip-generate', {
+    execSync('npx prisma migrate deploy', {
         stdio: 'inherit',
         env: process.env
     });
-    console.log("✅ Database schema synced.");
+    console.log("✅ Database migrations applied.");
 } catch {
-    console.error("❌ DB Push failed.");
+    console.error("❌ Migration failed.");
     process.exit(1);
 }
 
